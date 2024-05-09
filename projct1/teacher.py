@@ -8,6 +8,18 @@ class Submission:
         self.grade = grade
 
 
+def grade_submission(submission, grade):
+    submission.grade = grade
+    print(f"Оценка {grade} выставлена для задания {submission.assignment.title}")
+
+
+def grade_assignment(student, assignment, grade):
+
+    for submission in student.submissions:
+        if submission.assignment == assignment:
+            submission.grade = grade
+            print(f"Оценка {grade} выставлена для студента {student.name} по заданию {assignment.title}")
+
 
 class Teacher(User):
     def __init__(self, name, email, teacher_id):
@@ -21,7 +33,8 @@ class Teacher(User):
 
 
 
-    def grade_assignment(self, student, assignment, grade):
+    @staticmethod
+    def grade_assignment(student, assignment, grade):
 
         for submission in student.submissions:
             if submission.assignment == assignment:
@@ -35,6 +48,7 @@ class Teacher(User):
 
 
 
-    def grade_submission(self, submission, grade):
+    @staticmethod
+    def grade_submission(submission, grade):
         submission.grade = grade
         print(f"Оценка {grade} выставлена для задания {submission.assignment.title}")

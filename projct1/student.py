@@ -5,7 +5,7 @@ class Student(User):
     def __init__(self, name, email, student_id):
         super().__init__(name, email)
         self.student_id = student_id
-        self.assigments = []
+        self.assignments = []
 
 
     def display_info(self):
